@@ -1,0 +1,53 @@
+server:
+  port: 8081
+  tomcat:
+    # 最大线程数
+    max-threads: 500
+    # 最小线程数
+    min-spare-threads: 20
+    # 队列长度
+    accept-count: 1000
+    # 最大链接数
+    max-connections: 1000
+    #链接建立超时时间
+    connection-timeout: 6000
+    uri-encoding: utf-8
+
+spring:
+  #Mysql
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.2.201:3306/general?useUnicode=true&characterEncoding=utf-8
+    username: general
+    password: general
+  #Redis
+  redis:
+    host: 192.168.2.201
+    port: 6379
+    jedis:
+      pool:
+        max-active: 100
+        max-wait: -1
+        max-idle: 500
+        min-idle: 0
+    timeout: 6000
+    lettuce:
+      shutdown-timeout: 60000
+  #Mongodb
+  #  data:
+  #    mongodb:
+  #      uri: mongodb://192.168.88.129:27017/user
+#  thymeleaf:
+#    prefix: classpath:/templates/pages/
+#    suffix: .html
+#    cache: false
+#
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml                     #扫描本地映射路径
+  typeAliasesPackage: com.sshy.general.entity                         #实体类的包路径 不可以使用通配符
+  configuration.log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #打印日志
+
+
+
+
